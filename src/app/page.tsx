@@ -13,12 +13,21 @@ export default function Page() {
         <div>
           <h1 className="text-2xl font-bold mb-8 select-none">Netflix.</h1>
           <nav className="space-y-4 select-none">
-            <p className="text-base font-medium cursor-default">Browse</p>
-            <p className="text-base font-medium cursor-default">Watchlist</p>
-            <p className="text-base font-medium cursor-default">Coming Soon</p>
-            <p className="text-base font-medium cursor-default">Friends</p>
-            <p className="text-base font-medium cursor-default">Parties</p>
-            <p className="text-base font-medium cursor-default">Settings</p>
+            {[
+              "Browse",
+              "Watchlist",
+              "Coming Soon",
+              "Friends",
+              "Parties",
+              "Settings",
+            ].map((item, index) => (
+              <p
+                key={index}
+                className="text-base font-medium cursor-default"
+              >
+                {item}
+              </p>
+            ))}
           </nav>
         </div>
       </aside>
@@ -45,8 +54,11 @@ export default function Page() {
           <h3 className="text-lg md:text-xl font-semibold mb-4">Parties</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {["Cadaver", "Monster Inc", "Friends", "Blade Runner 2049"].map(
-              (movie) => (
-                <div className="p-4 rounded-lg bg-white dark:bg-gray-800 transition-colors duration-300">
+              (movie, index) => (
+                <div
+                  key={index}
+                  className="p-4 rounded-lg bg-white dark:bg-gray-800 transition-colors duration-300"
+                >
                   <p className="font-semibold">{movie}</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                     Grupo activo
@@ -69,8 +81,8 @@ export default function Page() {
               "/damsel.jpg",
               "/alguien.jpg",
               "/how.jpg",
-            ].map((img) => (
-              <div className="rounded-lg overflow-hidden">
+            ].map((img, index) => (
+              <div key={index} className="rounded-lg overflow-hidden">
                 <img
                   src={img}
                   alt="movie"
@@ -86,6 +98,7 @@ export default function Page() {
       <aside className="hidden md:flex w-20 p-5 flex-col items-center space-y-4 bg-white dark:bg-gray-800 transition-colors duration-300">
         {[1, 2, 3, 4, 5].map((i) => (
           <img
+            key={i} // ✅ clave única por cada avatar
             src={`https://i.pravatar.cc/100?img=${i}`}
             alt="avatar"
             className="w-10 h-10 rounded-full object-cover"
